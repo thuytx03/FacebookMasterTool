@@ -2,6 +2,10 @@
 
 Chào mọi người, hôm nay mình được thầy giáo của mình là ChatGPT hướng dẫn cách code Extension Chrome và mình đã tạo ra một công cụ để lấy Cookies, Access Token, FB_DTSG, UID,... từ Facebook. Nếu thấy hay, mọi người cho mình xin một ngôi sao nhé!
 
+## Tính năng hiện có
+1. Truy xuất thông tin: Access Token, Cookies, FB_DTSG
+2. Lấy UID thành viên trong nhóm (group)
+
 ## Cài đặt
 
 1. Kiểm tra phiên bản `Node.js` của bạn, đảm bảo >= **14**.
