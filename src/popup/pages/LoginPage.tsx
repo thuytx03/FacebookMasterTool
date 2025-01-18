@@ -1,3 +1,4 @@
+import constants from "../../configs/constants";
 
 const LoginPage = () => {
   const handleRedirectLogin = () => {
@@ -10,10 +11,10 @@ const LoginPage = () => {
       <div className="p-8 rounded-2xl bg-white shadow max-w-lg w-full text-center">
         <h2 className="text-gray-800 text-center text-2xl font-bold mb-1">
           Chào mừng bạn đến với
-          <span className="text-blue-500"> FacebookTXT</span>
+          <span className="text-blue-500"> {constants.name}</span>
         </h2>
         <div className="text-gray-500 mb-5">
-          <span className="text-blue-500 font-semibold">FacebookTXT </span>
+          <span className="text-blue-500 font-semibold">{constants.name} </span>
           là công cụ cung cấp các dịch vụ hàng loạt: kết bạn, lấy thông tin khách hàng từ nhóm,... từ
           FACEBOOK. Với độ chính
           xác cao nhất.

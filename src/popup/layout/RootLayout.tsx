@@ -4,14 +4,14 @@ import Footer from './Footer'
 import { useEffect } from 'react'
 import constants from '../../configs/constants'
 import { getCookie } from '../../helpers/cookieHelpers'
-import useAuth from '../../hooks/useAuth'
 import useAuthStore from '../../stores/auth'
+import useAuth from '../../hooks/useAuth'
 const RootLayout = () => {
   const { isAuthenticated } = useAuth()
   const { saveProfileInfo } = useAuthStore()
   const fetchFacebookData = async (accessToken: string) => {
     if (!accessToken) return console.log('Không có token');
-    const url = "https://graph.facebook.com/me?access_token=EAAGNO4a7r2wBOxQ9UaxZAmGLncZAphoIION70DTmx46F9kAmOOmodUADsnVLDGBW5ZAiZBTy3OZBYCpwozJsoRhKwvsEEdb9fD8d10ZAZANqtLR2eIyshISYZAKnLJR5hKcE2wkJOxCILCAv9byXlr2jj5prlMZAqu76ZAIbZASEB0XDYgqEXmoTltZAV60zqwZDZD";
+    const url = "https://graph.facebook.com/me?access_token=" + accessToken;
     const options = {
       method: "GET",
       headers: {
@@ -43,7 +43,7 @@ const RootLayout = () => {
     }
   };
   const fetchData = async () => {
-    const token = await getCookie(constants.urlZalo, 'fbtxt_access_token1');
+    const token = await getCookie(constants.urlFacebook, 'fbtxt_access_token1');
     if (token) {
       fetchFacebookData(token);
     } else {
@@ -54,9 +54,9 @@ const RootLayout = () => {
     fetchData();
   }, []);
   return (
-    <div className="flex flex-col min-w-[600px] h-[500px]" >
-      <Header />
-      <main id="fbtxt_popup_main" className="flex-grow">
+    <div className="flex flex-col min-w-[600px] h-[500px] overflow-y-auto custom-scrollbar" >
+      {isAuthenticated && <Header />}
+      <main id="fbtxt_popup_main" className="flex-grow ">
         <Outlet />
       </main>
       <Footer />

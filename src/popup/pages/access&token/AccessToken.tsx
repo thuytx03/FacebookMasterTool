@@ -13,16 +13,16 @@ const AccessTokenPage = () => {
         const token2 = await fetchToken2()
         if (token1) {
             setAccessToken1(token1 as string)
-            setCookie(constants.urlZalo, 'fbtxt_access_token1', token1 as string, 30)
+            setCookie(constants.urlFacebook, 'fbtxt_access_token1', token1 as string, 1)
         }
         if (token2) {
             setAccessToken2(token2 as string)
-            setCookie(constants.urlZalo, 'fbtxt_access_token2', token2 as string, 30)
+            setCookie(constants.urlFacebook, 'fbtxt_access_token2', token2 as string, 1)
         }
     }
     const fetchCookies = async () => {
-        const token1 = await getCookie(constants.urlZalo, 'fbtxt_access_token1')
-        const token2 = await getCookie(constants.urlZalo, 'fbtxt_access_token2')
+        const token1 = await getCookie(constants.urlFacebook, 'fbtxt_access_token1')
+        const token2 = await getCookie(constants.urlFacebook, 'fbtxt_access_token2')
         if (!token1 || !token2) {
             fetchAndSetToken()
         }else{

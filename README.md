@@ -1,6 +1,6 @@
 # Facebook Master Tool
 
-Chào mọi người, hôm nay mình được ChatGPT hướng dẫn cách code Extension Chrome và mình đã tạo ra một công cụ để lấy Cookies, Access Token, FB_DTSG, UID,... từ Facebook. Nếu thấy hay, mọi người cho mình xin một ngôi sao nhé!
+Chào mọi người, hôm nay mình được thầy giáo của mình là ChatGPT hướng dẫn cách code Extension Chrome và mình đã tạo ra một công cụ để lấy Cookies, Access Token, FB_DTSG, UID,... từ Facebook. Nếu thấy hay, mọi người cho mình xin một ngôi sao nhé!
 
 ## Cài đặt
 

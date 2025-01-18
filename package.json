@@ -1,9 +1,9 @@
 {
-  "name": "my-crx-app",
-  "displayName": "my-crx-app",
-  "version": "0.0.0",
-  "author": "**",
-  "description": "",
+  "name": "Facebook Master Tool",
+  "displayName": "Facebook Master Tool",
+  "version": "1.0.0",
+  "author": "Trịnh Xuân Thuỷ",
+  "description": "Facebook Master Tool - Giải pháp toàn diện cho quản lý Facebook.",
   "type": "module",
   "license": "MIT",
   "keywords": [

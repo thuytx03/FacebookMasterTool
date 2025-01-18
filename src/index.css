@@ -14,3 +14,40 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+/* Custom Scrollbar Class */
+.custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #d1d5db #f3f4f6; /* Thumb and Track color */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 1px; /* Scrollbar width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f3f4f6; /* Track color */
+  border-radius: 9999px; /* Rounded track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db; /* Thumb color */
+  border-radius: 9999px; /* Rounded thumb */
+}
+
+.custom-scrollbar.dark-mode::-webkit-scrollbar-track {
+  background: #374151; /* Dark mode track */
+}
+
+.custom-scrollbar.dark-mode::-webkit-scrollbar-thumb {
+  background: #6b7280; /* Dark mode thumb */
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
