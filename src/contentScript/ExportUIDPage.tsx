@@ -5,8 +5,10 @@ import { copyToClipboard, removeCacheStorage } from "../helpers/functionHelpers"
 import $ from 'jquery';
 import { ExportState } from "../types/uid";
 import ExportMemberToExcel from "../components/export/ExportMemberToExcel";
+import { exportToTXT } from "../helpers/exportHelpers";
 
 const ExportUIDPage = () => {
+  const fileName = "danh_sach_uid_txt_" + new Date().getTime();
   const configRef = useRef({
     isNextPage: true,
     postId: '',
@@ -295,7 +297,13 @@ const ExportUIDPage = () => {
           <div style={{ display: "flex", gap: "5px" }}>
 
             <ExportMemberToExcel data={state.arrUID} />
-
+            <button
+              type="button"
+              onClick={() => exportToTXT(textAreaRef.current?.value || '', fileName)}
+              className="h-10 bg-yellow-500 text-white px-4 rounded-md  text-sm"
+            >
+              Export TXT
+            </button>
             <button onClick={() => copyToClipboard(textAreaRef.current?.value || '')} className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg'>
               Copy
             </button>

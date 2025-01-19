@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ColumnWidth, Header } from "../../types/excel";
-import { exportToExcel } from "../../helpers/excelHelpers";
+import { exportToExcel } from "../../helpers/exportHelpers";
 import { Member } from "../../types/uid";
 interface IProps {
   data?: Member[];
 }
 const ExportMemberToExcel = ({ data }: IProps) => {
-  const fileName = "danh_sach_uid" + new Date().getTime();
+  const fileName = "danh_sach_uid_xlsx_" + new Date().getTime();
   const [member, setMember] = useState<Member[]>([]);
 
   function memberData(data: Member[]) {
