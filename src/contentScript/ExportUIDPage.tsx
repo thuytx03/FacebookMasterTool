@@ -1,7 +1,7 @@
 import { Textarea } from "@headlessui/react";
 import IconLoading from "../components/IconLoading";
 import { useEffect, useState, useRef, useMemo } from "react";
-import { removeCacheStorage } from "../helpers/functionHelpers";
+import { copyToClipboard, removeCacheStorage } from "../helpers/functionHelpers";
 import $ from 'jquery';
 import { ExportState } from "../types/uid";
 import ExportMemberToExcel from "../components/export/ExportMemberToExcel";
@@ -294,9 +294,9 @@ const ExportUIDPage = () => {
           </div>
           <div style={{ display: "flex", gap: "5px" }}>
 
-            <ExportMemberToExcel data={state.arrUID}/>
+            <ExportMemberToExcel data={state.arrUID} />
 
-            <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg'>
+            <button onClick={() => copyToClipboard(textAreaRef.current?.value || '')} className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg'>
               Copy
             </button>
           </div>
