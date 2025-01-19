@@ -1,25 +1,12 @@
 import { Textarea } from "@headlessui/react";
 import IconLoading from "../components/IconLoading";
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { removeCacheStorage } from "../helpers/functionHelpers";
 import $ from 'jquery';
-
-interface Member {
-  UID: string;
-  Name?: string;
-}
-
-interface ExportState {
-  isLayoutExportUid: boolean;
-  count: number;
-  options: any[];
-  arrUID: Member[];
-  status: 'continue' | 'stop';
-}
+import { ExportState } from "../types/uid";
+import ExportMemberToExcel from "../components/export/ExportMemberToExcel";
 
 const ExportUIDPage = () => {
-  // Các biến config được gom nhóm vào một object
   const configRef = useRef({
     isNextPage: true,
     postId: '',
@@ -31,7 +18,6 @@ const ExportUIDPage = () => {
     status: 'continue'
   });
 
-  // Gom nhóm các state liên quan vào một state object
   const [state, setState] = useState<ExportState>({
     isLayoutExportUid: false,
     count: 0,
@@ -41,7 +27,6 @@ const ExportUIDPage = () => {
   });
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Hàm helper để update state một cách immutable
   const updateState = (updates: Partial<ExportState>) => {
     setState(prev => ({ ...prev, ...updates }));
   };
@@ -110,19 +95,22 @@ const ExportUIDPage = () => {
     return 0;
   };
 
-  const setListMemberUid = async (member: { id: string, name?: string }) => {
+  const setListMemberUid = async (member: { id: string, name?: string, url: string }) => {
     let isValid = true;
-    const isExisting = state.arrUID.some(item => item.UID === member.id);
+    const isExisting = state.arrUID.some(item => item.uid === member.id);
 
     if (member.name && !isExisting) {
       if (member.id.length > 16 || ["Người dùng Facebook", "Facebook User", "Facebook user", "facebook user"].includes(member.name)) {
         isValid = false;
       }
       if (isValid) {
-        const newMember = { 'UID': member.id, 'Name': member.name };
-        updateState({
-          arrUID: [newMember, ...state.arrUID] // Thêm phần tử mới vào đầu mảng
-        });
+        const newMember = { uid: member.id, name: member.name, url: member.url };
+
+        setState(prevState => ({
+          ...prevState,
+          arrUID: [newMember, ...prevState.arrUID] // Thêm phần tử mới nhất vào đầu mảng
+        }));
+
         if (textAreaRef.current) {
           textAreaRef.current.value = `${member.id}|${member.name}\n` + textAreaRef.current.value;
         }
@@ -130,15 +118,19 @@ const ExportUIDPage = () => {
     }
 
     if (member.id && !member.name) {
-      const newMember = { 'UID': member.id };
-      updateState({
-        arrUID: [newMember, ...state.arrUID] // Thêm phần tử mới vào đầu mảng
-      });
+      const newMember = { uid: member.id };
+      setState(prevState => ({
+        ...prevState,
+        arrUID: [newMember, ...prevState.arrUID] // Thêm phần tử mới nhất vào đầu mảng
+      }));
+
       if (textAreaRef.current) {
         textAreaRef.current.value = member.id + '\n' + textAreaRef.current.value;
       }
     }
+
   };
+
 
   const getUIdMembersGroup = async (apiUrl: string, userId: string, groupId: string, cursor: string | null = null) => {
     const requestData = {
@@ -163,7 +155,7 @@ const ExportUIDPage = () => {
       }),
       'doc_id': 0x199d031e73c95f
     };
-    console.log(requestData)
+    // console.log(requestData)
     if (configRef.current.timeoutId) {
       clearTimeout(configRef.current.timeoutId);
       configRef.current.timeoutId = null;
@@ -187,7 +179,7 @@ const ExportUIDPage = () => {
           configRef.current.cursorEnd = data.data.node.new_members.page_info.end_cursor;
 
           members.forEach((member: any) => {
-            setListMemberUid({ 'id': member.node.id, 'name': member.node.name });
+            setListMemberUid({ 'id': member.node.id, 'name': member.node.name, 'url': member.node.url });
             // console.log('member', member)
 
           });
@@ -249,6 +241,7 @@ const ExportUIDPage = () => {
         });
         configRef.current.type = storageData.data.type;
         index(storageData.data.type);
+        removeCacheStorage();
       }
     });
   }, []);
@@ -264,6 +257,7 @@ const ExportUIDPage = () => {
           >
             X
           </button>
+
           <div className='flex items-center justify-between mt-4'>
             <div>
               {state.status === "continue" ? (
@@ -299,34 +293,9 @@ const ExportUIDPage = () => {
             />
           </div>
           <div style={{ display: "flex", gap: "5px" }}>
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <MenuButton className='bg-green-500 text-white font-bold py-2 px-4 rounded-lg'>
-                  Xuất file
-                </MenuButton>
-              </div>
-              <MenuItems
-                transition
-                className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              >
-                <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
-                  >
-                    Xuất file Excel
-                  </a>
-                </MenuItem>
-                <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
-                  >
-                    Xuất file TXT
-                  </a>
-                </MenuItem>
-              </MenuItems>
-            </Menu>
+
+            <ExportMemberToExcel data={state.arrUID}/>
+
             <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg'>
               Copy
             </button>

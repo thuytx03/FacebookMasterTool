@@ -24,15 +24,18 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "file-saver": "2.0.5",
     "jquery": "^3.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.1.2",
+    "xlsx": "0.18.5",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "2.0.0-beta.30",
     "@types/chrome": "^0.0.246",
+    "@types/file-saver": "^2.0.7",
     "@types/jquery": "^3.5.32",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^18.2.13",
