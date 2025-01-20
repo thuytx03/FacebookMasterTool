@@ -36,7 +36,10 @@ const ExportUIDPage = () => {
   const updateState = (updates: Partial<ExportState>) => {
     setState(prev => ({ ...prev, ...updates }));
   };
-
+  const pickId = (url: string) => {
+    const match = url.match(/id=(\d+)/);
+    return match ? match[1] : null;
+  }
   const getIdUrl = (url: string): string => {
     const parts = url.split('/');
     return parts.filter(item => item !== '').pop() || '';
