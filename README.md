@@ -6,6 +6,7 @@ Chào mọi người, hôm nay mình được thầy giáo của mình là ChatG
 1. Truy xuất thông tin: Access Token, Cookies, FB_DTSG
 2. Lấy UID thành viên trong nhóm (group)
 3. Lấy UID trong bài viết (post): like, share, comment
+4. Lấy UID từ trang cá nhân (profile)
 
 ## Cài đặt
 
