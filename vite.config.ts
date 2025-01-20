@@ -19,10 +19,10 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 2000,
     },
     server: {
-      port: 5173,
+      port: 2003,
       strictPort: true,
       hmr: {
-        port: 5173,
+        port: 2003,
       },
     },
     plugins: [crx({ manifest }), react()],

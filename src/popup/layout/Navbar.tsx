@@ -21,7 +21,7 @@ const Navbar = () => {
       label: 'Lấy UID người dùng',
       children: [
         { path: '/export-uid-group', label: 'Lấy UID từ nhóm' },
-        { path: '/uid-post', label: 'Lấy UID từ bài viết' },
+        { path: '/export-uid-post', label: 'Lấy UID từ bài viết' },
         { path: '/uid-profile', label: 'Lấy UID cá nhân' },
       ],
     },

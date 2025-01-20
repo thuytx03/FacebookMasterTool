@@ -5,6 +5,7 @@ Chào mọi người, hôm nay mình được thầy giáo của mình là ChatG
 ## Tính năng hiện có
 1. Truy xuất thông tin: Access Token, Cookies, FB_DTSG
 2. Lấy UID thành viên trong nhóm (group)
+3. Lấy UID trong bài viết (post): like, share, comment
 
 ## Cài đặt
 

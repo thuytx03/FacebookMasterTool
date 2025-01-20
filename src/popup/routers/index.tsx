@@ -9,6 +9,7 @@ import CookiePage from "../pages/access&token/CookiesPage";
 import AccessTokenPage from "../pages/access&token/AccessToken";
 import FB_DTSGPage from "../pages/access&token/FB_DTSGPage";
 import ExportUIDGroup from "../pages/uid/ExportUIDGroup";
+import ExportUIDPost from "../pages/uid/ExportUIDPost";
 
 
 export const Routing = () => (
@@ -20,6 +21,7 @@ export const Routing = () => (
             <Route path="/fb-dtsg" element={<FB_DTSGPage />} />
 
             <Route path="/export-uid-group" element={<ExportUIDGroup />} />
+            <Route path="/export-uid-post" element={<ExportUIDPost />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFound />} />

@@ -10,4 +10,5 @@ export type ExportState = {
   options: any[];
   arrUID: Member[];
   status: 'continue' | 'stop';
+  success: boolean;
 }

@@ -1,5 +1,5 @@
 import '../index.css'
-import ExportUIDPage from './ExportUIDPage';
+import ExportUIDPage from './export/ExportUIDPage';
 const App: React.FC = () => {
 
   return (
