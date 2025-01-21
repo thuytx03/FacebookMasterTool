@@ -7,6 +7,7 @@ Chào mọi người, hôm nay mình được thầy giáo của mình là ChatG
 2. Lấy UID thành viên trong nhóm (group)
 3. Lấy UID trong bài viết (post): like, share, comment
 4. Lấy UID từ trang cá nhân (profile)
+5. Download Video Facebook từ Reel, Watch, Post,..
 
 ## Cài đặt
 
