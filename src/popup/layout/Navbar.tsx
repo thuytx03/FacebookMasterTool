@@ -17,6 +17,13 @@ const Navbar = () => {
       ],
     },
     {
+      path: '#video',
+      label: 'Video',
+      children: [
+        { path: '/download-video', label: 'Download Video' },
+      ],
+    },
+    {
       path: '##getuid',
       label: 'Lấy UID người dùng',
       children: [

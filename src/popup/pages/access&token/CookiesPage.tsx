@@ -20,7 +20,7 @@ const CookiePage = () => {
                     }
                 }
                 // console.log('Đây là cookie: ', cookieString);
-
+                
                 setCookies(cookieString);
             });
         });

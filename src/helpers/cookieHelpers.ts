@@ -37,3 +37,22 @@ export function getCookie(domain: string, name: string): Promise<string | null> 
     });
 
 }
+export const getCookiesFacebook = (): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true }, function (tabs) {
+      chrome.cookies.getAll({
+        url: "https://www.facebook.com"
+      }, function (cookiesArray) {
+        if (chrome.runtime.lastError) {
+          return reject(chrome.runtime.lastError);
+        }
+        let cookieString = "";
+        for (let i = 0; i < cookiesArray.length; i++) {
+          cookieString += cookiesArray[i].name + "=" + cookiesArray[i].value + ";";
+        }
+        resolve(cookieString);
+      });
+    });
+  });
+};
+

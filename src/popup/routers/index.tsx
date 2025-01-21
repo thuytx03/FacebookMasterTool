@@ -11,6 +11,7 @@ import FB_DTSGPage from "../pages/access&token/FB_DTSGPage";
 import ExportUIDGroup from "../pages/uid/ExportUIDGroup";
 import ExportUIDPost from "../pages/uid/ExportUIDPost";
 import ExportUIDProfile from "../pages/uid/ExportUIDProfile";
+import DownloadVideo from "../pages/download/DownloadVideo";
 
 
 export const Routing = () => (
@@ -24,6 +25,9 @@ export const Routing = () => (
             <Route path="/export-uid-group" element={<ExportUIDGroup />} />
             <Route path="/export-uid-post" element={<ExportUIDPost />} />
             <Route path="/export-uid-profile" element={<ExportUIDProfile />} />
+
+            <Route path="/download-video" element={<DownloadVideo />} />
+            
             <Route path="/home" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFound />} />
