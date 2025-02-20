@@ -1,0 +1,75 @@
+{
+  "name": "Facebook Master Tool",
+  "description": "Facebook Master Tool - Giải pháp toàn diện cho quản lý Facebook.",
+  "version": "1.0.2",
+  "manifest_version": 3,
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/index.ts-loader-e9d62826.js"
+      ],
+      "matches": [
+        "https://www.facebook.com/*"
+      ],
+      "css": [
+        "assets/constants-fb6f812e.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "icon.png",
+        "src/assets/data/emoji.json"
+      ],
+      "use_dynamic_url": false
+    },
+    {
+      "matches": [
+        "https://www.facebook.com/*"
+      ],
+      "resources": [
+        "assets/chunk-f84b1892.js",
+        "assets/chunk-d07001dc.js",
+        "assets/chunk-239ce3d3.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "bookmarks",
+    "identity",
+    "cookies",
+    "tabs",
+    "storage",
+    "activeTab",
+    "webRequest",
+    "notifications",
+    "clipboardWrite",
+    "declarativeNetRequest"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

@@ -26,15 +26,15 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches:['https://www.facebook.com/*'],
+      matches: ['https://www.facebook.com/*'],
       js: ['src/contentScript/index.ts'],
     },
   ],
 
   web_accessible_resources: [
     {
-      resources: ['icon.png'],
-      matches: [],
+      resources: ['icon.png', "src/assets/data/emoji.json"],
+      matches: ["<all_urls>"],
     },
   ],
   host_permissions: ["<all_urls>"],

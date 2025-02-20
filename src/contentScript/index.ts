@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import App from './App';
 // Tạo một container để render giao diện
 const container = document.createElement('div');
-container.id = 'my-extension-root';
+container.id = 'facebook-master-tool';
 document.body.appendChild(container);
 
 // Render React vào container
